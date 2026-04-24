@@ -5,7 +5,7 @@
     font-family: Helvetica, Arial;
 }
 
-.button{
+.buttons{
     padding: 10px 20px;
    font-size: 1.5 em;
    color: white;
@@ -13,7 +13,20 @@
    border-radius: 5px;
    cursor: pointer;
    transition: background-color 0.25s ease; 
+
 }
-.button:hover{
+.buttons:hover{
     background-color: hsl(214, 100%, 60%);
 }
+
+#btnContainer{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* .container_btn{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+} */
