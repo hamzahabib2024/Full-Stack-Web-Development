@@ -1,0 +1,10 @@
+.myButtons {
+    font-size: 4rem;
+    border: none;
+    margin: 10px;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 10px;
+    background-color: hsl(236, 100%, 60%);
+    cursor: pointer;
+}
