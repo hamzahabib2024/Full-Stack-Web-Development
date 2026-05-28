@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Hamza",
+        "age": 21,
+        "country": "Pakistan",
+        "skills": ["JavaScript", "React", "Node.js"],
+        "isStudent": true
+    },
+    {
+        "name": "Haider",
+        "age": 17,
+        "country": "Pakistan",
+        "skills": ["Python", "Django", "Flask"],
+        "isStudent": false
+    },
+    {
+        "name": "Hassan",
+        "age": 14,
+        "country": "Pakistan",
+        "skills": ["Java", "Spring", "Hibernate"],
+        "isStudent": true
+    },
+    {
+        "name": "Hussain",
+        "age": 23,
+        "country": "Pakistan",
+        "skills": ["C#", ".NET", "Azure"],
+        "isStudent": false
+    },
+    {
+        "name": "Hafiz",
+        "age": 19,
+        "country": "Pakistan",
+        "skills": ["PHP", "Laravel", "Symfony"],
+        "isStudent": true
+    }
+]
