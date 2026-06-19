@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import Header from './components/Header.jsx'
 import ProjectCard from './components/ProjectCard.jsx'
 import ContactForm from './components/ContactForm.jsx'
@@ -45,12 +45,11 @@ const education = [
 ]
 
 function App() {
-  const [theme, setTheme] = useState('light')
   const featured = useMemo(() => projects, [])
 
   return (
-    <div className={`app ${theme}`}>
-      <Header theme={theme} onToggleTheme={() => setTheme(theme === 'light' ? 'dark' : 'light')} />
+    <div className="app dark">
+      <Header />
       <main className="page-content">
         <section className="hero">
           <div>
@@ -62,6 +61,11 @@ function App() {
             <div className="hero-actions">
               <a className="button primary" href="#projects">Projects</a>
               <a className="button secondary" href="#contact">Contact</a>
+            </div>
+            <div className="hero-keypoints">
+              <span className="hero-keypoint">Design system foundations</span>
+              <span className="hero-keypoint">Performance-first frontend</span>
+              <span className="hero-keypoint">Modern React experiences</span>
             </div>
           </div>
           <div className="hero-card profile-card">
@@ -124,6 +128,24 @@ function App() {
                 <p>{item.details}</p>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section id="capabilities" className="capabilities-section">
+          <h2>Core Capabilities</h2>
+          <div className="capabilities-grid">
+            <article className="capability-card">
+              <h3>UI Design</h3>
+              <p>Pixel-perfect layout, professional spacing, and premium visual hierarchy for modern products.</p>
+            </article>
+            <article className="capability-card">
+              <h3>React Development</h3>
+              <p>Reusable components, clean JSX structure, and polished interface behavior.</p>
+            </article>
+            <article className="capability-card">
+              <h3>Responsive Web</h3>
+              <p>Adaptive layouts and cross-device usability for a refined presentation on mobile and desktop.</p>
+            </article>
           </div>
         </section>
 

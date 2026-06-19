@@ -1,14 +1,13 @@
-function Header({ theme, onToggleTheme }) {
+function Header() {
   return (
     <header className="site-header">
-      <div className="logo">Portfolio</div>
+      <div className="logo">Hamza Habib</div>
       <nav>
+        <a href="#about">About</a>
         <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </nav>
-      <button className="theme-toggle" onClick={onToggleTheme}>
-        {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
-      </button>
     </header>
   )
 }
