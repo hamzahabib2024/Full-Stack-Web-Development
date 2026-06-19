@@ -3,30 +3,50 @@ import Header from './components/Header.jsx'
 import ProjectCard from './components/ProjectCard.jsx'
 import ContactForm from './components/ContactForm.jsx'
 
-const projectData = [
+const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Express', 'Git', 'Responsive Design']
+
+const projects = [
   {
-    title: 'Productivity Dashboard',
-    description: 'React dashboard with charts, dark mode, and task cards.',
-    tags: ['React', 'CSS', 'API'],
+    title: 'React Portfolio Website',
+    description: 'A responsive personal portfolio built with React and Vite, featuring theme switching, reusable components, and a contact form.',
+    tags: ['React', 'Vite', 'Responsive'],
     demo: '#',
   },
   {
-    title: 'E-commerce Landing',
-    description: 'Responsive product landing page with animations and pricing.',
-    tags: ['React', 'Responsive', 'UX'],
+    title: 'Weather App',
+    description: 'A weather forecast UI that consumes API data and displays real-time weather information with interactive cards.',
+    tags: ['JavaScript', 'API', 'CSS'],
     demo: '#',
   },
   {
-    title: 'Budget Tracker',
-    description: 'Client-side expense tracker with charts and category filters.',
-    tags: ['React', 'Hooks', 'State'],
+    title: 'Digital Clock',
+    description: 'A clean time display app that updates every second and demonstrates DOM manipulation and state management.',
+    tags: ['JavaScript', 'DOM', 'UI'],
     demo: '#',
+  },
+]
+
+const experience = [
+  {
+    role: 'Web Developer Student',
+    company: 'Self-directed Projects',
+    period: '2023 - Present',
+    details: 'Designed and built web applications using HTML, CSS, JavaScript, and React. Focused on responsive layout, component reusability, and user-friendly interfaces.',
+  },
+]
+
+const education = [
+  {
+    institution: 'Artificial Intelligence Program',
+    degree: 'Student',
+    period: '2023 - Present',
+    details: 'Studying AI concepts alongside full stack web development to create intelligent, modern applications.',
   },
 ]
 
 function App() {
   const [theme, setTheme] = useState('light')
-  const featured = useMemo(() => projectData.slice(0, 3), [])
+  const featured = useMemo(() => projects, [])
 
   return (
     <div className={`app ${theme}`}>
@@ -34,19 +54,52 @@ function App() {
       <main className="page-content">
         <section className="hero">
           <div>
-            <p className="eyebrow">React Portfolio Project</p>
-            <h1>Build modern user experiences with clean React architecture.</h1>
+            <p className="eyebrow">Muhammad Hamza Habib</p>
+            <h1>AI student & Frontend Developer</h1>
             <p>
-              This project demonstrates reusable components, responsive layout, theme switching, and a polished portfolio UI.
+              Building polished web experiences with React, JavaScript, and responsive design. I am based in Islamabad, Pakistan, and I specialize in converting ideas into user-friendly applications.
             </p>
             <div className="hero-actions">
-              <a className="button primary" href="#projects">View Projects</a>
-              <a className="button secondary" href="#contact">Contact Me</a>
+              <a className="button primary" href="#projects">Projects</a>
+              <a className="button secondary" href="#contact">Contact</a>
             </div>
           </div>
-          <div className="hero-card">
-            <span className="hero-badge">Full Stack React</span>
-            <p>Fast client-side navigation, clean component design, and a modern portfolio presentation.</p>
+          <div className="hero-card profile-card">
+            <span className="hero-badge">Resume Summary</span>
+            <p><strong>Email:</strong> mhamzahabib@gmail.com</p>
+            <p><strong>Location:</strong> Islamabad, Pakistan</p>
+            <p><strong>Focus:</strong> Web development with React, modern UI, and practical learning projects.</p>
+          </div>
+        </section>
+
+        <section id="about" className="about-section">
+          <div className="about-copy">
+            <h2>About Me</h2>
+            <p>
+              I am a motivated developer studying Artificial Intelligence while building full stack web projects. I enjoy creating interfaces that are both functional and visually polished.
+            </p>
+          </div>
+          <div className="about-grid">
+            <div>
+              <h3>Skills</h3>
+              <ul>
+                {skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3>Education</h3>
+              <ul>
+                {education.map((item) => (
+                  <li key={item.institution}>
+                    <strong>{item.institution}</strong>
+                    <p>{item.degree}</p>
+                    <p>{item.period}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -59,9 +112,24 @@ function App() {
           </div>
         </section>
 
+        <section id="experience" className="experience-section">
+          <h2>Experience</h2>
+          <div className="timeline">
+            {experience.map((item) => (
+              <article key={item.role} className="timeline-card">
+                <h3>{item.role}</h3>
+                <p className="timeline-meta">
+                  {item.company} • {item.period}
+                </p>
+                <p>{item.details}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section id="contact" className="contact-section">
-          <h2>Get In Touch</h2>
-          <p>Use this form to describe your next project or share a collaboration idea.</p>
+          <h2>Contact</h2>
+          <p>If you would like to collaborate or learn more about my work, send a message below.</p>
           <ContactForm />
         </section>
       </main>
