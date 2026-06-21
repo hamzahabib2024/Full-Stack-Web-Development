@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import Header from './components/Header.jsx'
 import ProjectCard from './components/ProjectCard.jsx'
 import ContactForm from './components/ContactForm.jsx'
+import profileImage from './assets/profile.jpg'
 
 const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Express', 'Git', 'Responsive Design']
 
@@ -69,6 +70,7 @@ function App() {
             </div>
           </div>
           <div className="hero-card profile-card">
+            <img className="profile-photo" src={profileImage} alt="Muhammad Hamza Habib profile" />
             <span className="hero-badge">Resume Summary</span>
             <p><strong>Email:</strong> mhamzahabib@gmail.com</p>
             <p><strong>Location:</strong> Islamabad, Pakistan</p>
