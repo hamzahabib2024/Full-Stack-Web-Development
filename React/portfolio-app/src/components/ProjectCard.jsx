@@ -8,9 +8,16 @@ function ProjectCard({ project }) {
           <span key={tag}>{tag}</span>
         ))}
       </div>
-      <a className="project-link" href={project.demo} target="_blank" rel="noreferrer">
-        View Demo
-      </a>
+      <div className="project-links">
+        <a className="project-link" href={project.demo} target="_blank" rel="noreferrer">
+          View Project
+        </a>
+        {project.github && (
+          <a className="project-link secondary" href={project.github} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        )}
+      </div>
     </article>
   )
 }
