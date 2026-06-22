@@ -92,11 +92,41 @@ const certifications = [
   { title: 'AI ka Taaruf', issuer: 'CAIS Society', link: 'https://www.linkedin.com/in/muhammad-hamza-habib-622243303/overlay/Certifications/1625088111/treasury/?profileId=ACoAAE10o7oBEedM5I_khasfrSqj2dO5QlsumE4' },
 ]
 
+const concepts = ['OOP', 'Agile Development', 'Deep Learning Fundamentals', 'NLP Basics', 'Model Evaluation', 'Feature Engineering']
+
+const references = [
+  {
+    name: 'Umar Nauman',
+    title: 'Assistant Professor of Computer Science',
+    organization: 'COMSATS University Islamabad',
+    email: 'umarnauman@comsats.edu.pk',
+  },
+  {
+    name: 'Professor Dr Siffat Ullah Khan',
+    title: 'Chairman, Department of Artificial Intelligence',
+    organization: 'University of Malakand',
+    email: 'siffatullah@uom.edu.pk',
+  },
+  {
+    name: 'Professor Dr Mahmood Niazi',
+    title: 'Professor of Software Engineering',
+    organization: 'KFUPM, Saudi Arabia',
+    email: 'mkniazi@kfupm.edu.sa',
+  },
+]
+
 function App() {
   const featured = useMemo(() => projects, [])
 
   return (
     <div className="app dark">
+      <div className="background-animation" aria-hidden="true">
+        <span className="particle particle-1" />
+        <span className="particle particle-2" />
+        <span className="particle particle-3" />
+        <span className="particle particle-4" />
+        <span className="particle particle-5" />
+      </div>
       <Header />
       <main className="page-content">
         <section className="hero">
@@ -254,6 +284,35 @@ function App() {
                 <h3>{item.title}</h3>
                 <p>{item.issuer}</p>
                 <a href={item.link} target="_blank" rel="noreferrer">View Certificate</a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="core-concepts" className="concepts-section">
+          <div className="section-header">
+            <h2>Core Concepts</h2>
+          </div>
+          <div className="concept-card-grid">
+            {concepts.map((item) => (
+              <article key={item} className="concept-card">
+                <p>{item}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="references" className="references-section">
+          <div className="section-header">
+            <h2>References</h2>
+          </div>
+          <div className="reference-grid">
+            {references.map((ref) => (
+              <article key={ref.name} className="reference-card">
+                <h3>{ref.name}</h3>
+                <p>{ref.title}</p>
+                <p>{ref.organization}</p>
+                <a href={`mailto:${ref.email}`}>{ref.email}</a>
               </article>
             ))}
           </div>
