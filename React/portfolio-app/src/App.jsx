@@ -119,7 +119,7 @@ function App() {
   const featured = useMemo(() => projects, [])
 
   return (
-    <div className="app dark">
+    <div className="app">
       <div className="background-animation" aria-hidden="true">
         <span className="particle particle-1" />
         <span className="particle particle-2" />
