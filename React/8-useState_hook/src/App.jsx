@@ -7,12 +7,14 @@
           // it is a React hook that allows the creation of stateful variables AND a setter function to update its value in the virtual dom.
           // [name, setName]
 
+import MyComponent from "./MyComponent.jsx";
+
 function App(){
 
 
   return(
     <>
-    
+      <MyComponent />
     </>
   );
 }
