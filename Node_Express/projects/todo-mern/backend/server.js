@@ -2,7 +2,8 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const connectDB = require("./config/db"); // new import
+const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
 
 // 2. Load environment variables from .env into process.env
 dotenv.config();
@@ -21,6 +22,8 @@ app.use(express.json());   // parse incoming JSON request bodies into req.body
 app.get("/", (req, res) => {
   res.json({ message: "API is running..." });
 });
+
+app.use("/api/auth", authRoutes);
 
 // 6. Define the port (from .env, fallback to 5000)
 const PORT = process.env.PORT || 5000;
