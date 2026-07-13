@@ -62,15 +62,14 @@ function Login() {
               name="password"
               value={formData.password}
               onChange={handleChange}
+              autoComplete="current-password"
               required
             />
           </div>
 
-          <div className="form-actions">
-            <button type="submit" className="btn" disabled={loading}>
-              {loading ? "Logging in..." : "Login"}
-            </button>
-          </div>
+          <button className="btn btn-primary" type="submit" disabled={loading}>
+            {loading ? "Signing in..." : "Login"}
+          </button>
         </form>
 
         <p className="page-subtitle">

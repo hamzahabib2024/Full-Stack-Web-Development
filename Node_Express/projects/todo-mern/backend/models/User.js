@@ -1,5 +1,18 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs"); 
+const bcrypt = require("bcryptjs");
+
+const weakPasswords = new Set([
+  "123456",
+  "password",
+  "12345678",
+  "qwerty",
+  "abc123",
+  "111111",
+  "123456789",
+  "12345",
+  "1234",
+  "password1",
+]);
 
 const userSchema = new mongoose.Schema(
   {
@@ -19,6 +32,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Password is required"],
       minlength: [6, "Password must be at least 6 characters"],
+      validate: {
+        validator: function (value) {
+          return !weakPasswords.has(value.toLowerCase());
+        },
+        message: "Password is too weak or commonly used. Choose a stronger password.",
+      },
     },
   },
   { timestamps: true }

@@ -61,16 +61,16 @@ function Register() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              minLength={6}
+              minLength={8}
+              autoComplete="new-password"
               required
             />
+            <small className="card-text">Use at least 8 characters and avoid common passwords.</small>
           </div>
 
-          <div className="form-actions">
-            <button type="submit" className="btn" disabled={loading}>
-              {loading ? "Registering..." : "Register"}
-            </button>
-          </div>
+          <button className="btn btn-primary" type="submit" disabled={loading}>
+            {loading ? "Creating account..." : "Register"}
+          </button>
         </form>
 
         <p className="page-subtitle">
