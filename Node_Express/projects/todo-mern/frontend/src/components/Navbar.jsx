@@ -15,9 +15,10 @@ function Navbar() {
       <Link to="/">Home</Link> |{" "}
       {user ? (
         <>
-          <Link to="/dashboard">Dashboard</Link> |{" "}
-          <Link to="/profile">Profile</Link> |{" "}
-          <button onClick={handleLogout}>Logout</button>
+            <Link to="/dashboard">Dashboard</Link> |{" "}
+            <Link to="/tasks">My Tasks</Link> |{" "}
+            <Link to="/profile">Profile</Link> |{" "}
+            <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
         <>

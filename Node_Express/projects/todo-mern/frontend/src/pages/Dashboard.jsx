@@ -41,7 +41,11 @@ function Dashboard() {
         <StatCard label="Completed" value={stats.completed} color="green" />
         <StatCard label="Pending" value={stats.pending} color="orange" />
         <StatCard label="High Priority" value={stats.highPriority} color="red" />
+        <div style={{ marginTop: "20px" }}>
+          <Link to="/tasks">View All Tasks →</Link>
+        </div>
       </div>
+      
     </div>
   );
 }
