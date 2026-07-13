@@ -32,36 +32,51 @@ function Register() {
   };
 
   return (
-    <div>
-      <h1>Register</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+    <div className="container">
+      <div className="page-header">
         <div>
-          <label>Name</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+          <h1 className="page-title">Register</h1>
+          <p className="page-subtitle">Create an account and manage your tasks.</p>
         </div>
-        <div>
-          <label>Email</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            minLength={6}
-            required
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "Registering..." : "Register"}
-        </button>
-      </form>
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
-      </p>
+      </div>
+
+      <div className="form-card">
+        <form onSubmit={handleSubmit}>
+          {error && <p className="error-text">{error}</p>}
+
+          <div className="form-group">
+            <label>Name</label>
+            <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+          </div>
+
+          <div className="form-group">
+            <label>Email</label>
+            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              minLength={6}
+              required
+            />
+          </div>
+
+          <div className="form-actions">
+            <button type="submit" className="btn" disabled={loading}>
+              {loading ? "Registering..." : "Register"}
+            </button>
+          </div>
+        </form>
+
+        <p className="page-subtitle">
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+      </div>
     </div>
   );
 }

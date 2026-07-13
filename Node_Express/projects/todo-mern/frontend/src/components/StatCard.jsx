@@ -1,16 +1,8 @@
-function StatCard({ label, value, color }) {
+function StatCard({ label, value }) {
   return (
-    <div
-      style={{
-        border: `1px solid ${color}`,
-        borderRadius: "8px",
-        padding: "16px",
-        textAlign: "center",
-        minWidth: "150px",
-      }}
-    >
-      <h2 style={{ margin: 0, color }}>{value}</h2>
-      <p style={{ margin: 0 }}>{label}</p>
+    <div className="stat-card">
+      <p className="stat-card-title">{label}</p>
+      <h2 className="stat-card-value">{value}</h2>
     </div>
   );
 }

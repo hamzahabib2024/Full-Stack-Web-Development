@@ -9,7 +9,6 @@ function Tasks() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Filter/search/sort state
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
   const [priority, setPriority] = useState("");
@@ -66,15 +65,18 @@ function Tasks() {
   };
 
   return (
-    <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <h1>My Tasks</h1>
-        <Link to="/tasks/create">
-          <button>+ Create New Task</button>
+    <div className="container">
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">My Tasks</h1>
+          <p className="page-subtitle">Search, filter, sort and manage your list.</p>
+        </div>
+        <Link to="/tasks/create" className="btn">
+          + Create New Task
         </Link>
       </div>
 
-      <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", margin: "16px 0" }}>
+      <div className="filters-bar">
         <input
           type="text"
           placeholder="Search tasks..."
@@ -108,7 +110,7 @@ function Tasks() {
         </select>
       </div>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error-text">{error}</p>}
 
       {loading ? (
         <p>Loading tasks...</p>

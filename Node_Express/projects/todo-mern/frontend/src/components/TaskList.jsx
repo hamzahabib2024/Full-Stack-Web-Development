@@ -6,7 +6,7 @@ function TaskList({ tasks, onToggleComplete, onDelete }) {
   }
 
   return (
-    <div>
+    <div className="task-list">
       {tasks.map((task) => (
         <TaskCard
           key={task._id}

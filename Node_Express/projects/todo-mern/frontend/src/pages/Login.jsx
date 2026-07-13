@@ -32,37 +32,51 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+    <div className="container">
+      <div className="page-header">
         <div>
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+          <h1 className="page-title">Login</h1>
+          <p className="page-subtitle">Access your dashboard and tasks.</p>
         </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
-      <p>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
+      </div>
+
+      <div className="form-card">
+        <form onSubmit={handleSubmit}>
+          {error && <p className="error-text">{error}</p>}
+
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-actions">
+            <button type="submit" className="btn" disabled={loading}>
+              {loading ? "Logging in..." : "Login"}
+            </button>
+          </div>
+        </form>
+
+        <p className="page-subtitle">
+          Don&apos;t have an account? <Link to="/register">Register</Link>
+        </p>
+      </div>
     </div>
   );
 }

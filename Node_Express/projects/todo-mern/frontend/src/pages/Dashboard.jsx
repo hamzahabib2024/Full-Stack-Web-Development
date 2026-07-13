@@ -29,23 +29,31 @@ function Dashboard() {
   }, []);
 
   if (loading) return <p>Loading dashboard...</p>;
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
+  if (error) return <p className="error-text">{error}</p>;
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <Link to="/tasks/create">+ Create New Task</Link>
-
-      <div style={{ display: "flex", gap: "16px", marginTop: "20px", flexWrap: "wrap" }}>
-        <StatCard label="Total Tasks" value={stats.total} color="#333" />
-        <StatCard label="Completed" value={stats.completed} color="green" />
-        <StatCard label="Pending" value={stats.pending} color="orange" />
-        <StatCard label="High Priority" value={stats.highPriority} color="red" />
-        <div style={{ marginTop: "20px" }}>
-          <Link to="/tasks">View All Tasks →</Link>
+    <div className="container">
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">Dashboard</h1>
+          <p className="page-subtitle">Your task summary and progress.</p>
+        </div>
+        <div className="page-actions">
+          <Link to="/tasks/create" className="btn">
+            + Create New Task
+          </Link>
+          <Link to="/tasks" className="button-link">
+            View All Tasks ?
+          </Link>
         </div>
       </div>
-      
+
+      <div className="stats-grid">
+        <StatCard label="Total Tasks" value={stats.total} />
+        <StatCard label="Completed" value={stats.completed} />
+        <StatCard label="Pending" value={stats.pending} />
+        <StatCard label="High Priority" value={stats.highPriority} />
+      </div>
     </div>
   );
 }

@@ -63,36 +63,52 @@ function EditTask() {
   };
 
   if (loading) return <p>Loading task...</p>;
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
+  if (error) return <p className="error-text">{error}</p>;
 
   return (
-    <div>
-      <h1>Edit Task</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="container">
+      <div className="page-header">
         <div>
-          <label>Title</label>
-          <input type="text" name="title" value={formData.title} onChange={handleChange} required />
+          <h1 className="page-title">Edit Task</h1>
+          <p className="page-subtitle">Update your task details.</p>
         </div>
-        <div>
-          <label>Description</label>
-          <textarea name="description" value={formData.description} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Priority</label>
-          <select name="priority" value={formData.priority} onChange={handleChange}>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
-        </div>
-        <div>
-          <label>Due Date</label>
-          <input type="date" name="dueDate" value={formData.dueDate} onChange={handleChange} />
-        </div>
-        <button type="submit" disabled={saving}>
-          {saving ? "Saving..." : "Save Changes"}
-        </button>
-      </form>
+      </div>
+
+      <div className="form-card">
+        <form onSubmit={handleSubmit}>
+          {error && <p className="error-text">{error}</p>}
+
+          <div className="form-group">
+            <label>Title</label>
+            <input type="text" name="title" value={formData.title} onChange={handleChange} required />
+          </div>
+
+          <div className="form-group">
+            <label>Description</label>
+            <textarea name="description" value={formData.description} onChange={handleChange} rows="5" />
+          </div>
+
+          <div className="form-group">
+            <label>Priority</label>
+            <select name="priority" value={formData.priority} onChange={handleChange}>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label>Due Date</label>
+            <input type="date" name="dueDate" value={formData.dueDate} onChange={handleChange} />
+          </div>
+
+          <div className="form-actions">
+            <button type="submit" className="btn" disabled={saving}>
+              {saving ? "Saving..." : "Save Changes"}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
