@@ -2,20 +2,38 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getTasks, deleteTask, toggleTaskComplete } from "../services/taskService";
 import TaskList from "../components/TaskList";
+import useDebounce from "../hooks/useDebounce";
 
 function Tasks() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // Filter/search/sort state
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("");
+  const [priority, setPriority] = useState("");
+  const [sortBy, setSortBy] = useState("createdAt");
+  const [order, setOrder] = useState("desc");
+
+  const debouncedSearch = useDebounce(search, 500);
+
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [debouncedSearch, status, priority, sortBy, order]);
 
   const fetchTasks = async () => {
     setLoading(true);
+    setError("");
     try {
-      const data = await getTasks();
+      const params = {};
+      if (debouncedSearch) params.search = debouncedSearch;
+      if (status) params.status = status;
+      if (priority) params.priority = priority;
+      params.sortBy = sortBy;
+      params.order = order;
+
+      const data = await getTasks(params);
       setTasks(data);
     } catch (err) {
       setError("Failed to load tasks.");
@@ -47,8 +65,6 @@ function Tasks() {
     }
   };
 
-  if (loading) return <p>Loading tasks...</p>;
-
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -58,9 +74,47 @@ function Tasks() {
         </Link>
       </div>
 
+      <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", margin: "16px 0" }}>
+        <input
+          type="text"
+          placeholder="Search tasks..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
+        <select value={status} onChange={(e) => setStatus(e.target.value)}>
+          <option value="">All Status</option>
+          <option value="pending">Pending</option>
+          <option value="completed">Completed</option>
+        </select>
+
+        <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+          <option value="">All Priorities</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="createdAt">Date Created</option>
+          <option value="dueDate">Due Date</option>
+          <option value="title">Title</option>
+          <option value="priority">Priority</option>
+        </select>
+
+        <select value={order} onChange={(e) => setOrder(e.target.value)}>
+          <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
+        </select>
+      </div>
+
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <TaskList tasks={tasks} onToggleComplete={handleToggleComplete} onDelete={handleDelete} />
+      {loading ? (
+        <p>Loading tasks...</p>
+      ) : (
+        <TaskList tasks={tasks} onToggleComplete={handleToggleComplete} onDelete={handleDelete} />
+      )}
     </div>
   );
 }
