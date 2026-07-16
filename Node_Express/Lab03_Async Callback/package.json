@@ -1,0 +1,12 @@
+{
+  "name": "lab03-async-callback",
+  "version": "1.0.0",
+  "description": "Small Express example showing async callback",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
