@@ -1,0 +1,520 @@
+/*
+  Complete CSS Revision Guide with Comments
+  This file is written to be easy to revise.
+  Each section explains the topic in simple words and includes a working example.
+*/
+
+/* ==========================
+   1. Basic Reset and Root Variables
+   ========================== */
+/* A reset removes browser default spacing so your layout is predictable. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom properties (CSS variables) make reuse easy. */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #111827;
+  --accent-color: #10b981;
+  --text-color: #f9fafb;
+  --light-bg: #f8fafc;
+  --border-color: #dbe4ee;
+  --shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  color: var(--secondary-color);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 30px 20px;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* ==========================
+   2. A - Animation
+   ========================== */
+/* Animation adds motion. You can animate properties such as position, opacity, and scale. */
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-me {
+  animation-name: slideIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  width: fit-content;
+  background: var(--primary-color);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+}
+
+/* ==========================
+   3. B - Backgrounds
+   ========================== */
+/* Background properties control the background color, image, gradient, and repeat behavior. */
+.bg-demo {
+  background-color: #f4f4f4;
+  background-image: linear-gradient(135deg, #6a11cb, #2575fc);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+}
+
+/* ==========================
+   4. C - Cascade, Comments, Colors, Cursor
+   ========================== */
+/* CSS rules follow the cascade, so later rules or more specific rules can override earlier ones. */
+/* Comments are useful for explaining your code during revision. */
+.color-demo {
+  color: var(--text-color);
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+/* ==========================
+   5. D - Display
+   ========================== */
+/* display controls how an element behaves: block, inline, inline-block, flex, grid, none. */
+.display-demo {
+  display: block;
+  background: #e0f2fe;
+  padding: 10px;
+}
+
+.inline-demo {
+  display: inline;
+  background: #dcfce7;
+  padding: 6px;
+}
+
+/* ==========================
+   6. E - Box Model
+   ========================== */
+/* Every element has content, padding, border, and margin. */
+.box-model {
+  width: 280px;
+  padding: 20px;
+  border: 2px solid #333;
+  margin: 20px auto;
+}
+
+/* ==========================
+   7. F - Flexbox
+   ========================== */
+/* Flexbox is best for arranging items in one direction: row or column. */
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  flex: 1;
+  min-width: 100px;
+  background: var(--accent-color);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* ==========================
+   8. G - Grid
+   ========================== */
+/* Grid is used for two-dimensional layouts with rows and columns. */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.grid-item {
+  background: #dbeafe;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ==========================
+   9. H - Hover, Hyperlinks, Height/Width
+   ========================== */
+/* :hover changes style when the mouse moves over an element. */
+.button {
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: #1d4ed8;
+}
+
+.button:focus {
+  outline: 3px solid #f59e0b;
+}
+
+.link-demo a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-demo a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================
+   10. I - Images and Icons
+   ========================== */
+/* Images can be resized, rounded, and framed using CSS. */
+.img-card img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin-top: 10px;
+}
+
+/* ==========================
+   11. J - Justify Content and Alignment
+   ========================== */
+/* justify-content aligns items along the main axis in flex and grid. */
+.justify-demo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ==========================
+   12. K - Keyframes
+   ========================== */
+/* Keyframes define the steps of an animation. */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse-demo {
+  animation: pulse 1.5s infinite;
+  width: fit-content;
+  padding: 10px 14px;
+  background: #f59e0b;
+  color: white;
+  border-radius: 8px;
+}
+
+/* ==========================
+   13. L - Lists and Layout
+   ========================== */
+/* Lists can be styled with bullets, spacing, and indentation. */
+.list-demo ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+/* ==========================
+   14. M - Margin and Padding
+   ========================== */
+/* margin adds space outside an element, padding adds space inside it. */
+.spacing-demo {
+  margin: 10px;
+  padding: 15px;
+  background: #e0f2fe;
+  border-radius: 8px;
+}
+
+/* ==========================
+   15. N - Normalize / Reset and Navigation
+   ========================== */
+/* A reset makes layout consistent across browsers. */
+nav a {
+  margin-right: 10px;
+  color: var(--primary-color);
+}
+
+/* ==========================
+   16. O - Opacity and Overflow
+   ========================== */
+/* opacity changes visibility, overflow controls extra content. */
+.overflow-demo {
+  width: 180px;
+  height: 80px;
+  overflow: auto;
+  padding: 10px;
+  background: #fef3c7;
+  border-radius: 8px;
+}
+
+.extra-demo {
+  opacity: 0.9;
+  user-select: none;
+}
+
+/* ==========================
+   17. P - Positioning
+   ========================== */
+/* position controls where an element is placed: static, relative, absolute, fixed, sticky. */
+.position-demo {
+  position: relative;
+  top: 10px;
+  left: 20px;
+  background: #ede9fe;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* ==========================
+   18. Q - Queries (Media Queries)
+   ========================== */
+/* Media queries make a page responsive on different screen sizes. */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+}
+
+/* ==========================
+   19. R - Responsive Design
+   ========================== */
+/* Responsive design uses flexible layouts and media queries. */
+.responsive-box {
+  width: 100%;
+  max-width: 600px;
+  padding: 16px;
+  background: #ecfeff;
+  border-radius: 10px;
+}
+
+/* ==========================
+   20. S - Selectors and Specificity
+   ========================== */
+/* Selectors target HTML elements. Specificity decides which rule wins. */
+/* In general: ID > class > element */
+#main-title {
+  color: red;
+}
+
+.card .title {
+  color: blue;
+}
+
+h2 {
+  color: #0f172a;
+}
+
+/* ==========================
+   21. T - Text, Transform, Transition, Typography
+   ========================== */
+/* Text properties control font, size, weight, letter spacing, and alignment. */
+.text-demo {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.transform-demo {
+  transform: rotate(5deg) scale(1.02);
+  transition: transform 0.3s ease;
+  background: #fef2f2;
+  padding: 12px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.transform-demo:hover {
+  transform: rotate(0deg) scale(1.1);
+}
+
+/* ==========================
+   22. U - Units
+   ========================== */
+/* CSS supports units like px, %, em, rem, vh, vw. */
+.unit-demo {
+  font-size: 1.2rem;
+  width: 80%;
+  padding: 1em;
+  background: #fdf2f8;
+  border-radius: 8px;
+}
+
+/* ==========================
+   23. V - Variables and Visibility
+   ========================== */
+/* Variables help keep code consistent. Visibility controls whether an element is shown. */
+.var-demo {
+  color: var(--accent-color);
+}
+
+.hidden-demo {
+  visibility: hidden;
+}
+
+/* ==========================
+   24. W - Width, Height, White-space, Word-break
+   ========================== */
+/* These properties control size and how content wraps. */
+.size-demo {
+  width: 300px;
+  height: 120px;
+  white-space: normal;
+  word-break: break-word;
+  background: #f3e8ff;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* ==========================
+   25. X - X-axis and Extra Properties
+   ========================== */
+/* Extra properties include opacity, cursor, selection, and user-select. */
+.x-demo {
+  opacity: 0.9;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ==========================
+   26. Y - Y-axis and Layout
+   ========================== */
+/* The vertical arrangement of content can be controlled using flex-direction and gap. */
+.y-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ==========================
+   27. Z - Z-index
+   ========================== */
+/* z-index controls stacking order when elements overlap. */
+.stack-box {
+  position: relative;
+  height: 120px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.stack-box .top {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+  background: #fb923c;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.stack-box .bottom {
+  position: absolute;
+  top: 40px;
+  left: 45px;
+  z-index: 1;
+  background: #38bdf8;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+/* ==========================
+   Final Revision Notes
+   ========================== */
+/*
+  Revision tips:
+  1. Learn selectors first.
+  2. Understand the box model.
+  3. Practice flexbox and grid.
+  4. Use responsive design and media queries.
+  5. Keep your code clean with comments and variables.
+*/
+
+/* ==========================
+   Practice Questions for Revision
+   ========================== */
+.practice-section {
+  margin-top: 25px;
+}
+
+.practice-section h2 {
+  margin-bottom: 12px;
+  color: var(--primary-color);
+}
+
+.practice-item {
+  background: #f8fafc;
+  border-left: 4px solid var(--accent-color);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.practice-item strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--secondary-color);
+}
+
+.practice-item p {
+  margin: 0;
+  color: #334155;
+}
